@@ -13,4 +13,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: website_name });
 });
 
+router.get('/upload', function(req, res, next) {
+  res.render('upload', { title: 'Upload a Script - ' + website_name });
+});
+
 module.exports = router;
