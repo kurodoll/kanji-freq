@@ -3,3 +3,11 @@ extends layout
 block content
   div.center
     p This is where you can upload scripts to be analyzed and added to the site.
+
+    br
+    form(action='/upload' method='post')
+      select(name='type')
+        option(value='Visual Novel') Visual Novel
+
+      br
+      input(type='text' name='title' placeholder='Title')
