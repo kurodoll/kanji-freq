@@ -8,7 +8,13 @@ router.use(file_upload());
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // *                                                          * // App Init //
 const website_name = 'Kanji Freak';
-config = require('../config');
+
+try {
+  config = require('../config');
+}
+catch (e) {
+  console.warn('No config file found.');
+}
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
