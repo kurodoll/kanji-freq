@@ -3,7 +3,10 @@ doctype html
 html
   head
     title= title
+
     link(rel='stylesheet' href='/stylesheets/style.css')
+    script(type='text/javascript' src='/javascripts/jquery-3.3.1.min.js')
+    script(type='text/javascript' src='/javascripts/moment.min.js')
 
   body
     h1 漢字FREAK
@@ -12,6 +15,7 @@ html
       p
         | <a href='/'>Home</a>
         | <a href='/upload'>Upload a Script</a>
+        | <a href='/listing'>Listing</a>
 
     div.content
       block content

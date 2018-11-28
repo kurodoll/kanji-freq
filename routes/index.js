@@ -93,4 +93,18 @@ router.post('/upload', function(req, res, next) {
   }
 });
 
+router.get('/listing', function(req, res, next) {
+  const query = 'SELECT * FROM scripts;';
+
+  pg_pool.query(query, (err, result) => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.render('listing', {
+      title: 'Listing - ' + website_name,
+      scripts: result.rows });
+  });
+});
+
 module.exports = router;

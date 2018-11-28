@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function() {
+      $('.timestamp').each(function(i, obj) {
+        this.innerHTML = moment(this.innerHTML).fromNow();
+      });
+    });
+
+
+  div.center
+    table
+      tr.header
+        td <p>Type</p>
+        td <p>Title</p>
+        td <p>Uploaded</p>
+        td <p>Status</p>
+
+      each script in scripts
+        tr
+          td <p>#{script.type}</p>
+          td <p>#{script.title}</p>
+          td <p class='timestamp'>#{script.added}</p>
+
+          if script.status == 'modq'
+            td <p class='modq'>In moderation queue</p>
