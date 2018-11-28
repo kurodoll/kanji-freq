@@ -53,7 +53,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
-input,
+input[type='text'],
+input[type='submit'],
 select {
   margin-top: 5px;
   padding: 3px;
@@ -63,13 +64,29 @@ select {
   color: #fff;
   font: 10pt Calibri;
 }
-input {
+input[type='text'] {
   width: 50%;
   padding-left: 7px;
 }
-input:hover,
+input[type='submit'],
+input[type='file'] {
+  margin-top: 5px;
+  color: #fff;
+  font: 10pt Calibri;
+}
+input[type='submit'] {
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+input[type='text']:hover,
 select:hover {
   border: 1px #326496 solid;
+}
+input[type='submit']:hover {
+  background: rgba(250,150,50,0.2);
+  border: 1px #fa9632 solid;
+  cursor: pointer;
 }
 option {
   background: #000;

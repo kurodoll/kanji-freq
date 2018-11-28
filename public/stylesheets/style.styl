@@ -67,7 +67,7 @@ a:hover
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // *                                                             * // Forms //
-input, select
+input[type='text'], input[type='submit'], select
     margin-top 5px
 
     padding 3px
@@ -79,12 +79,29 @@ input, select
     color white
     font 10pt Calibri
 
-input
+input[type='text']
     width 50%
     padding-left 7px
 
-input:hover, select:hover
+input[type='submit'], input[type='file']
+    margin-top 5px
+
+    color white
+    font 10pt Calibri
+
+input[type='submit']
+    padding 5px
+    padding-left 30px
+    padding-right 30px
+
+input[type='text']:hover, select:hover
     border 1px rgb(50,100,150) solid
+
+input[type='submit']:hover
+    background rgba(250,150,50,.2)
+    border 1px rgb(250,150,50) solid
+
+    cursor pointer
 
 option
     background black
