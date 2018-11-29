@@ -113,4 +113,18 @@ router.get('/listing', function(req, res, next) {
   });
 });
 
+router.get('/script/:id', function(req, res, next) {
+  const query = 'SELECT * FROM scripts WHERE id = $1;';
+
+  pg_pool.query(query, [req.params.id], (err, result) => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.render('script', {
+      title: result.rows[0].title + ' - ' + website_name,
+      script: result.rows[0] });
+  });
+});
+
 module.exports = router;

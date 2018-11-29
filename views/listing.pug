@@ -20,7 +20,7 @@ block content
       each script in scripts
         tr
           td <p>#{script.type}</p>
-          td <p>#{script.title}</p>
+          td <p><a href='/script/#{script.id}'>#{script.title}</a></p>
           td <p class='timestamp'>#{script.added}</p>
 
           if script.status == 'modq'

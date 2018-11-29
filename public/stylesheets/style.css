@@ -58,12 +58,28 @@ p.approved {
 p.complete {
   color: rgba(255,255,255,0.5);
 }
+pre {
+  font: 9pt Calibri;
+  color: rgba(255,255,255,0.8);
+}
 a {
   color: #6496c8;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
+}
+.header {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.important {
+  padding: 3px;
+  font-size: 9pt;
+  font-weight: bold;
+  background: rgba(250,50,0,0.2);
+  border: 1px #fa3200 solid;
+  border-radius: 3px;
 }
 table {
   width: 100%;
