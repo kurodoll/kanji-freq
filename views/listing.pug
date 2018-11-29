@@ -25,3 +25,9 @@ block content
 
           if script.status == 'modq'
             td <p class='modq'>In moderation queue</p>
+          if script.status == 'denied'
+            td <p class='denied'>Denied</p>
+          if script.status == 'approved'
+            td <p class='approved'>Approved</p>
+          if script.status == 'complete'
+            td <p class='complete'>Complete</p>
