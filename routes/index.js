@@ -100,7 +100,7 @@ router.post('/upload', function(req, res, next) {
 });
 
 router.get('/listing', function(req, res, next) {
-  const query = 'SELECT * FROM scripts;';
+  const query = 'SELECT * FROM scripts ORDER BY added DESC;';
 
   pg_pool.query(query, (err, result) => {
     if (err) {
