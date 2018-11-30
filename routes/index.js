@@ -150,4 +150,19 @@ router.get('/kanji', function(req, res, next) {
   });
 });
 
+router.get('/kanji/:id', function(req, res, next) {
+  const query = 'SELECT * FROM scripts WHERE id = $1;';
+
+  pg_pool.query(query, [req.params.id], (err, result) => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.render('kanji_specific', {
+      title: 'Kanji (' + result.rows[0].title + ') - ' + website_name,
+      script: result.rows[0],
+      kanji: JSON.parse(result.rows[0].kanji_stats) });
+  });
+});
+
 module.exports = router;

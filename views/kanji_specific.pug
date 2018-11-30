@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function() {
+      $('.character').each(function(i, obj) {
+        // Hide everything that isn't kanji
+        if (!(this.innerHTML >= '\u4e00' && this.innerHTML <= '\u9faf' ||
+              this.innerHTML >= '\u3400' && this.innerHTML <= '\u4dbf'))
+        {
+          $(this).closest('div').hide();
+        };
+      });
+    });
+
+
+  div.center
+    center
+      p
+        | Unique kanji: <span id='n_kanji' class='highlight'>#{script.n_unique_kanji}</span>
+        | in <span class='highlight'>#{script.title}</span>
+
+    br
+    each k in kanji
+      div.kanji
+        table
+          tr
+            td.kanji
+              p.char <a class='character' href='https://jisho.org/search/#{k[0]}'>#{k[0]}</a>
+            td
+              p <span class='subdued'>Count:</span> #{k[1]}
