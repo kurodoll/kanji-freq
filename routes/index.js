@@ -135,9 +135,18 @@ router.get('/kanji', function(req, res, next) {
       console.error(err);
     }
 
-    res.render('kanji', {
-      title: 'Kanji - ' + website_name,
-      kanji: result.rows });
+    const query = 'SELECT count(*) FROM scripts;';
+
+    pg_pool.query(query, (err, result2) => {
+      if (err) {
+        console.error(err);
+      }
+
+      res.render('kanji', {
+        title: 'Kanji - ' + website_name,
+        kanji: result.rows,
+        n_scripts: result2.rows[0].count });
+    });
   });
 });
 
