@@ -33,6 +33,15 @@ div.center {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+div.kanji {
+  padding: 5px;
+  margin-bottom: 3px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 2px rgba(0,0,0,0.5) solid;
+}
+div.kanji p.char {
+  font-size: 16pt;
+}
 h1 {
   margin: 0;
   padding-left: 25px;
@@ -46,7 +55,8 @@ p {
   font: 10pt Calibri;
   color: #c8c8c8;
 }
-p.modq {
+p.modq,
+.highlight {
   color: #fac832;
 }
 p.denied {
@@ -81,6 +91,9 @@ a:hover {
   border: 1px #fa3200 solid;
   border-radius: 3px;
 }
+.subdued {
+  color: rgba(255,255,255,0.5);
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -93,6 +106,9 @@ tr.header td p {
 }
 td {
   padding-left: 5px;
+}
+td.kanji {
+  width: 50px;
 }
 input[type='text'],
 input[type='submit'],

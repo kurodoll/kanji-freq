@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function() {
+      $('.character').each(function(i, obj) {
+        // Hide Japanese-style punctuation
+        if (this.innerHTML >= '\u3000' && this.innerHTML <= '\u303f') {
+          $(this).closest('div').hide();
+        };
+
+        // Hide Hiragana
+        if (this.innerHTML >= '\u3040' && this.innerHTML <= '\u309f') {
+          $(this).closest('div').hide();
+        };
+
+        // Hide Katakana
+        if (this.innerHTML >= '\u30a0' && this.innerHTML <= '\u30ff') {
+          $(this).closest('div').hide();
+        };
+
+        // Hide Full-width Roman characters and half-width Katakana
+        if (this.innerHTML >= '\uff00' && this.innerHTML <= '\uff9f') {
+          $(this).closest('div').hide();
+        };
+
+        // Hide other
+        if (this.innerHTML == '\n' || this.innerHTML == '…') {
+          $(this).closest('div').hide();
+        };
+      });
+    });
+
+
+  div.center
+    center
+      p
+        | Unique kanji seen: ~<span class='highlight'>#{kanji.length}</span>
+        | <span class='subdued'>(count includes some non-kanji characters)</span>
+
+    br
+    each k in kanji
+      div.kanji
+        table
+          tr
+            td.kanji
+              p.char <a class='character' href='https://jisho.org/search/#{k.character}'>#{k.character}</a>
+            td
+              p <span class='subdued'>Count:</span> #{k.count}

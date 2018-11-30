@@ -127,4 +127,18 @@ router.get('/script/:id', function(req, res, next) {
   });
 });
 
+router.get('/kanji', function(req, res, next) {
+  const query = 'SELECT * FROM kanji ORDER BY count DESC;';
+
+  pg_pool.query(query, (err, result) => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.render('kanji', {
+      title: 'Kanji - ' + website_name,
+      kanji: result.rows });
+  });
+});
+
 module.exports = router;
