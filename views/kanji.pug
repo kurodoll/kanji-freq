@@ -3,40 +3,26 @@ extends layout
 block content
   script.
     $(document).ready(function() {
+      let n_non_kanji_chars = 0
+
       $('.character').each(function(i, obj) {
-        // Hide Japanese-style punctuation
-        if (this.innerHTML >= '\u3000' && this.innerHTML <= '\u303f') {
+        // Hide everything that isn't kanji
+        if (!(this.innerHTML >= '\u4e00' && this.innerHTML <= '\u9faf' ||
+              this.innerHTML >= '\u3400' && this.innerHTML <= '\u4dbf'))
+        {
           $(this).closest('div').hide();
-        };
-
-        // Hide Hiragana
-        if (this.innerHTML >= '\u3040' && this.innerHTML <= '\u309f') {
-          $(this).closest('div').hide();
-        };
-
-        // Hide Katakana
-        if (this.innerHTML >= '\u30a0' && this.innerHTML <= '\u30ff') {
-          $(this).closest('div').hide();
-        };
-
-        // Hide Full-width Roman characters and half-width Katakana
-        if (this.innerHTML >= '\uff00' && this.innerHTML <= '\uff9f') {
-          $(this).closest('div').hide();
-        };
-
-        // Hide other
-        if (this.innerHTML == '\n' || this.innerHTML == '…') {
-          $(this).closest('div').hide();
+          n_non_kanji_chars++;
         };
       });
+
+      $('#n_kanji').text(parseInt($('#n_kanji')[0].innerHTML) - n_non_kanji_chars);
     });
 
 
   div.center
     center
       p
-        | Unique kanji seen: ~<span class='highlight'>#{kanji.length}</span>
-        | <span class='subdued'>(count includes some non-kanji characters)</span>
+        | Unique kanji seen: <span id='n_kanji' class='highlight'>#{kanji.length}</span>
         | in <span class='highlight'>#{n_scripts}</span> scripts
 
     br
