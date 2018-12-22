@@ -20,12 +20,24 @@ block content
       });
     }
 
+    function hideNonRoman() {
+      $('.char').each(function(i, obj) {
+        if (!(this.innerHTML[0] >= 'a' && this.innerHTML[0] <= 'z' ||
+              this.innerHTML[0] >= 'A' && this.innerHTML[0] <= 'Z' ||
+              this.innerHTML[0] >= '0' && this.innerHTML[0] <= '9'))
+        {
+          $(this).closest('div').hide();
+        };
+      });
+    }
+
 
   div.center
     center
       p
         | <span class='highlight'>#{script.title}</span><br>
-        | <span class='subdued'>Hiding single-character entries. <a href='javascript:hideNonKanji();'>Hide</a> non-kanji.</span>
+        | <span class='subdued'>Hiding single-character entries.<br>
+        | <a href='javascript:hideNonKanji();'>Hide</a> non-kanji. <a href='javascript:hideNonRoman();'>Hide</a> non-Roman.</span>
 
     br
     each v in vocab
