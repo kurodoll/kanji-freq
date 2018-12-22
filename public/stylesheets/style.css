@@ -63,13 +63,13 @@ p {
 }
 p.modq,
 .highlight {
-  color: #fac832;
+  color: #ffc896;
 }
 p.denied {
-  color: #fa6432;
+  color: #ff96c8;
 }
 p.approved {
-  color: #96fa32;
+  color: #c8ff96;
 }
 p.complete {
   color: rgba(255,255,255,0.5);
@@ -85,7 +85,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
-.header {
+span.header {
   font-weight: bold;
   text-decoration: underline;
 }
