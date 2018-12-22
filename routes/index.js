@@ -100,7 +100,7 @@ router.post('/upload', function(req, res, next) {
 });
 
 router.get('/listing', function(req, res, next) {
-  const query = 'SELECT id, type, title, added, status, n_unique_kanji FROM scripts ORDER BY added DESC;'; // eslint-disable-line max-len
+  const query = 'SELECT id, type, title, added, status, n_unique_kanji, n_unique_vocab FROM scripts ORDER BY added DESC;'; // eslint-disable-line max-len
 
   pg_pool.query(query, (err, result) => {
     if (err) {
