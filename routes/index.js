@@ -100,7 +100,7 @@ router.post('/upload', function(req, res, next) {
 });
 
 router.get('/listing', function(req, res, next) {
-  const query = 'SELECT * FROM scripts ORDER BY added DESC;';
+  const query = 'SELECT id, type, title, added, status, n_unique_kanji FROM scripts ORDER BY added DESC;'; // eslint-disable-line max-len
 
   pg_pool.query(query, (err, result) => {
     if (err) {
@@ -114,7 +114,7 @@ router.get('/listing', function(req, res, next) {
 });
 
 router.get('/script/:id', function(req, res, next) {
-  const query = 'SELECT * FROM scripts WHERE id = $1;';
+  const query = 'SELECT title, script, filename FROM scripts WHERE id = $1;';
 
   pg_pool.query(query, [req.params.id], (err, result) => {
     if (err) {
@@ -151,7 +151,7 @@ router.get('/kanji', function(req, res, next) {
 });
 
 router.get('/kanji/:id', function(req, res, next) {
-  const query = 'SELECT * FROM scripts WHERE id = $1;';
+  const query = 'SELECT id, title, n_unique_kanji, kanji_stats FROM scripts WHERE id = $1;'; // eslint-disable-line max-len
 
   pg_pool.query(query, [req.params.id], (err, result) => {
     if (err) {
@@ -166,7 +166,7 @@ router.get('/kanji/:id', function(req, res, next) {
 });
 
 router.get('/vocab/:id', function(req, res, next) {
-  const query = 'SELECT * FROM scripts WHERE id = $1;';
+  const query = 'SELECT id, title, vocab_stats FROM scripts WHERE id = $1;';
 
   pg_pool.query(query, [req.params.id], (err, result) => {
     if (err) {
