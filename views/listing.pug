@@ -74,6 +74,7 @@ block content
         td <p>Title <a href='/listing?sort=title'>▼</a><a href='/listing?sort=title&order=asc'>▲</a></p>
         td <p>Unique Kanji <a href='/listing?sort=kanji'>▼</a><a href='/listing?sort=kanji&order=asc'>▲</a></p>
         td <p>Unique Vocab <a href='/listing?sort=vocab'>▼</a><a href='/listing?sort=vocab&order=asc'>▲</a></p>
+        td <p>Script File Size</p>
         td <p>Uploaded <a href='/listing?sort=uploaded'>▼</a><a href='/listing?sort=uploaded&order=asc'>▲</a></p>
         td <p>Status</p>
 
@@ -83,6 +84,7 @@ block content
           td <p><a href='/script/#{script.id}'>#{script.title}</a></p>
           td <p><a class='n_kanji' href='/kanji/#{script.id}'>#{script.n_unique_kanji}</a></p>
           td <p><a class='n_vocab' href='/vocab/#{script.id}'>#{script.n_unique_vocab}</a></p>
+          td <p>#{(script.file_size / 1000000).toFixed(2)} MB</p>
           td <p class='timestamp'>#{script.added}</p>
 
           if script.status == 'modq'
