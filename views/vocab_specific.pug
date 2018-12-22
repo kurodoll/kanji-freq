@@ -10,12 +10,22 @@ block content
       });
     });
 
+    function hideNonKanji() {
+      $('.char').each(function(i, obj) {
+        if (!(this.innerHTML[0] >= '\u4e00' && this.innerHTML[0] <= '\u9faf' ||
+              this.innerHTML[0] >= '\u3400' && this.innerHTML[0] <= '\u4dbf'))
+        {
+          $(this).closest('div').hide();
+        };
+      });
+    }
+
 
   div.center
     center
       p
         | <span class='highlight'>#{script.title}</span><br>
-        | <span class='subdued'>Hiding single-character entries</span>
+        | <span class='subdued'>Hiding single-character entries. <a href='javascript:hideNonKanji();'>Hide</a> non-kanji.</span>
 
     br
     each v in vocab
