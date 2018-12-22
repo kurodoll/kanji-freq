@@ -15,6 +15,7 @@ block content
         td <p>Type</p>
         td <p>Title</p>
         td <p>Unique Kanji</p>
+        td <p>Vocab Freq</p>
         td <p>Uploaded</p>
         td <p>Status</p>
 
@@ -23,6 +24,7 @@ block content
           td <p>#{script.type}</p>
           td <p><a href='/script/#{script.id}'>#{script.title}</a></p>
           td <p><a href='/kanji/#{script.id}'>#{script.n_unique_kanji}</a></p>
+          td <p><a href='/vocab/#{script.id}'>View</a></p>
           td <p class='timestamp'>#{script.added}</p>
 
           if script.status == 'modq'

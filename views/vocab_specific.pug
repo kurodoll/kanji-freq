@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function() {
+      $('.char').each(function(i, obj) {
+        if (this.innerHTML.length < 2) {
+          $(this).closest('div').hide();
+        };
+      });
+    });
+
+
+  div.center
+    center
+      p
+        | <span class='highlight'>#{script.title}</span><br>
+        | <span class='subdued'>Hiding single-character entries</span>
+
+    br
+    each v in vocab
+      div.vocab
+        table
+          tr
+            td.vocab
+              p.char #{v[0]}
+            td
+              p <span class='subdued'>Count:</span> #{v[1]}

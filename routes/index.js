@@ -165,4 +165,19 @@ router.get('/kanji/:id', function(req, res, next) {
   });
 });
 
+router.get('/vocab/:id', function(req, res, next) {
+  const query = 'SELECT * FROM scripts WHERE id = $1;';
+
+  pg_pool.query(query, [req.params.id], (err, result) => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.render('vocab_specific', {
+      title: 'Vocab (' + result.rows[0].title + ') - ' + website_name,
+      script: result.rows[0],
+      vocab: JSON.parse(result.rows[0].vocab_stats) });
+  });
+});
+
 module.exports = router;
