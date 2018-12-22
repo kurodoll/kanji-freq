@@ -28,11 +28,11 @@ block content
       let k_highest = 0;
 
       $('.n_kanji').each(function(i, obj) {
-        if ($(this).text() < k_lowest) {
+        if ($(this).text() && $(this).text() < k_lowest) {
           k_lowest = parseInt($(this).text());
         }
 
-        if ($(this).text() > k_highest) {
+        if ($(this).text() && $(this).text() > k_highest) {
           k_highest = parseInt($(this).text());
         }
       });
@@ -49,11 +49,11 @@ block content
       let v_highest = 0;
 
       $('.n_vocab').each(function(i, obj) {
-        if ($(this).text() < v_lowest) {
+        if ($(this).text() && $(this).text() < v_lowest) {
           v_lowest = parseInt($(this).text());
         }
 
-        if ($(this).text() > v_highest) {
+        if ($(this).text() && $(this).text() > v_highest) {
           v_highest = parseInt($(this).text());
         }
       });
