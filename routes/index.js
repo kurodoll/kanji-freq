@@ -103,7 +103,7 @@ router.get('/listing', function(req, res, next) {
   let query = 'SELECT id, type, title, added, status, n_unique_kanji, n_unique_vocab FROM scripts ORDER BY '; // eslint-disable-line max-len
 
   if (!req.query.sort || req.query.sort == 'uploaded') {
-    query += 'added';
+    query += 'n_unique_kanji';
   }
   else if (req.query.sort == 'title') {
     query += 'title';

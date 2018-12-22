@@ -2,9 +2,67 @@ extends layout
 
 block content
   script.
+    const colours = [
+      'rgb(255,150,200)',
+      'rgb(255,200,150)',
+      'rgb(200,255,150)',
+      'rgb(150,255,200)',
+      'rgb(150,200,255)',
+      'rgb(200,150,255)'
+    ];
+
+    function map(n, in_min, in_max, out_min, out_max) {
+      in_range = in_max - in_min;
+      out_range = out_max - out_min;
+
+      return (n - in_min) * out_range / in_range + out_min;
+    }
+
     $(document).ready(function() {
       $('.timestamp').each(function(i, obj) {
         this.innerHTML = moment(this.innerHTML).fromNow();
+      });
+
+      // Colour unique kanji count values
+      let k_lowest = 10000;
+      let k_highest = 0;
+
+      $('.n_kanji').each(function(i, obj) {
+        if ($(this).text() < k_lowest) {
+          k_lowest = parseInt($(this).text());
+        }
+
+        if ($(this).text() > k_highest) {
+          k_highest = parseInt($(this).text());
+        }
+      });
+
+      $('.n_kanji').each(function(i, obj) {
+        const normalized = Math.round(map(parseInt($(this).text()), k_lowest, k_highest, 0, colours.length - 1));
+        const colour_id = (colours.length - 1) - normalized;
+
+        $(this).css('color', colours[colour_id]);
+      });
+
+      // Colour unique vocab count values
+      let v_lowest = 100000;
+      let v_highest = 0;
+
+      $('.n_vocab').each(function(i, obj) {
+        if ($(this).text() < v_lowest) {
+          v_lowest = parseInt($(this).text());
+        }
+
+        if ($(this).text() > v_highest) {
+          v_highest = parseInt($(this).text());
+        }
+      });
+
+      $('.n_vocab').each(function(i, obj) {
+        const normalized = Math.round(map(parseInt($(this).text()), v_lowest, v_highest, 0, colours.length - 1));
+        const colour_id = (colours.length - 1) - normalized;
+
+        $(this).css('color', colours[colour_id]);
       });
     });
 
@@ -14,7 +72,8 @@ block content
       tr.header
         td <p>Type</p>
         td <p>Title <a href='/listing?sort=title'>▼</a><a href='/listing?sort=title&order=asc'>▲</a></p>
-        td <p>Unique Kanji <a href='/listing?sort=kanji'>▼</a><a href='/listing?sort=kanji&order=asc'>▲</a> | Vocab <a href='/listing?sort=vocab'>▼</a><a href='/listing?sort=vocab&order=asc'>▲</a></p>
+        td <p>Unique Kanji <a href='/listing?sort=kanji'>▼</a><a href='/listing?sort=kanji&order=asc'>▲</a></p>
+        td <p>Unique Vocab <a href='/listing?sort=vocab'>▼</a><a href='/listing?sort=vocab&order=asc'>▲</a></p>
         td <p>Uploaded <a href='/listing?sort=uploaded'>▼</a><a href='/listing?sort=uploaded&order=asc'>▲</a></p>
         td <p>Status</p>
 
@@ -22,7 +81,8 @@ block content
         tr
           td <p>#{script.type}</p>
           td <p><a href='/script/#{script.id}'>#{script.title}</a></p>
-          td <p><a href='/kanji/#{script.id}'>#{script.n_unique_kanji}</a> | <a href='/vocab/#{script.id}'>#{script.n_unique_vocab}</a></p>
+          td <p><a class='n_kanji' href='/kanji/#{script.id}'>#{script.n_unique_kanji}</a></p>
+          td <p><a class='n_vocab' href='/vocab/#{script.id}'>#{script.n_unique_vocab}</a></p>
           td <p class='timestamp'>#{script.added}</p>
 
           if script.status == 'modq'
