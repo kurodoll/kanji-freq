@@ -13,9 +13,9 @@ block content
     table
       tr.header
         td <p>Type</p>
-        td <p>Title</p>
-        td <p>Unique Kanji | Vocab</p>
-        td <p>Uploaded</p>
+        td <p>Title <a href='/listing?sort=title'>▼</a><a href='/listing?sort=title&order=asc'>▲</a></p>
+        td <p>Unique Kanji <a href='/listing?sort=kanji'>▼</a><a href='/listing?sort=kanji&order=asc'>▲</a> | Vocab <a href='/listing?sort=vocab'>▼</a><a href='/listing?sort=vocab&order=asc'>▲</a></p>
+        td <p>Uploaded <a href='/listing?sort=uploaded'>▼</a><a href='/listing?sort=uploaded&order=asc'>▲</a></p>
         td <p>Status</p>
 
       each script in scripts

@@ -100,7 +100,27 @@ router.post('/upload', function(req, res, next) {
 });
 
 router.get('/listing', function(req, res, next) {
-  const query = 'SELECT id, type, title, added, status, n_unique_kanji, n_unique_vocab FROM scripts ORDER BY added DESC;'; // eslint-disable-line max-len
+  let query = 'SELECT id, type, title, added, status, n_unique_kanji, n_unique_vocab FROM scripts ORDER BY '; // eslint-disable-line max-len
+
+  if (!req.query.sort || req.query.sort == 'uploaded') {
+    query += 'added';
+  }
+  else if (req.query.sort == 'title') {
+    query += 'title';
+  }
+  else if (req.query.sort == 'kanji') {
+    query += 'n_unique_kanji';
+  }
+  else if (req.query.sort == 'vocab') {
+    query += 'n_unique_vocab';
+  }
+
+  if (!req.query.order || req.query.order == 'desc') {
+    query += ' DESC;';
+  }
+  else {
+    query += ' ASC;';
+  }
 
   pg_pool.query(query, (err, result) => {
     if (err) {

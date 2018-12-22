@@ -104,11 +104,22 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+tr {
+  height: 25px;
+}
 tr:nth-child(even) {
   background: rgba(255,255,255,0.05);
 }
 tr.header td p {
   font-weight: bold;
+}
+tr.header td p a {
+  font-size: 8pt;
+  color: #c864fa;
+}
+tr.header td p a:hover {
+  text-decoration: none;
+  color: #fff;
 }
 td {
   padding-left: 5px;
