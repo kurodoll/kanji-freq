@@ -61,14 +61,14 @@ p {
   font: 10pt Calibri;
   color: #c8c8c8;
 }
-p.modq,
-.highlight {
+p.modq {
   color: #ffc896;
 }
 p.denied {
   color: #ff96c8;
 }
-p.approved {
+p.approved,
+.highlight {
   color: #c8ff96;
 }
 p.complete {
