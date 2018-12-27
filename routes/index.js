@@ -114,6 +114,9 @@ router.get('/listing', function(req, res, next) {
   else if (req.query.sort == 'vocab') {
     query += 'n_unique_vocab';
   }
+  else if (req.query.sort == 'filesize') {
+    query += 'file_size';
+  }
 
   if (!req.query.order || req.query.order == 'desc') {
     query += ' DESC;';
