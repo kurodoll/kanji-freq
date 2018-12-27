@@ -102,20 +102,20 @@ router.post('/upload', function(req, res, next) {
 router.get('/listing', function(req, res, next) {
   let query = 'SELECT id, type, title, added, status, n_unique_kanji, n_unique_vocab, file_size FROM scripts ORDER BY '; // eslint-disable-line max-len
 
-  if (!req.query.sort || req.query.sort == 'uploaded') {
+  if (!req.query.sort || req.query.sort == 'kanji') {
     query += 'n_unique_kanji';
   }
   else if (req.query.sort == 'title') {
     query += 'title';
-  }
-  else if (req.query.sort == 'kanji') {
-    query += 'n_unique_kanji';
   }
   else if (req.query.sort == 'vocab') {
     query += 'n_unique_vocab';
   }
   else if (req.query.sort == 'filesize') {
     query += 'file_size';
+  }
+  else if (req.query.sort == 'uploaded') {
+    query += 'added';
   }
 
   if (!req.query.order || req.query.order == 'desc') {
